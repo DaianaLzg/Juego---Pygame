@@ -40,6 +40,7 @@ def main():
     invulnerable = False  
     puntuacion = 0 
 
+    #Tiempo
     shoot_delay = 190
     last_shot = 0
     tiempo_inicial = pygame.time.get_ticks()

@@ -93,10 +93,13 @@ def guardar_puntaje(nombre, puntaje):
     
     # Ordenar
     def obtener_puntaje(item):
+        ''' 
+        Obtiene el puntaje
+        y solo mantiene los 5 mejores
+        '''
         return item["puntaje"]
     datos.sort(key=obtener_puntaje, reverse=True)
-    datos = datos[:5]  # Mantener solo top 5
-
+    datos = datos[:5]
     # Guardar
     with open(RUTA_RANKING, "w", encoding="utf-8") as archivo:
         json.dump(datos, archivo, indent=4)

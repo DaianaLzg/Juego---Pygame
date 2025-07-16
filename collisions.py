@@ -1,3 +1,4 @@
+#Colisiones
 def colision_jugador_enemigo(jugador,
                             competidores,
                             invulnerable,

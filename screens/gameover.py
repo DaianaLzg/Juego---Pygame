@@ -26,7 +26,7 @@ def pantalla_game_over(screen, fuente, puntuacion):
                 elif len(nombre) < max_caracteres and event.unicode.isprintable():
                     nombre += event.unicode
 
-        # Fondo semitransparente
+        # Fondo
         overlay = pygame.Surface((st.ANCHO_VENTANA, st.ALTO_VENTANA))
         overlay.set_alpha(180)
         overlay.fill(st.COLOR_01)
@@ -45,7 +45,7 @@ def pantalla_game_over(screen, fuente, puntuacion):
         screen.blit(texto_score, rect_score)
 
         # Instrucciones
-        texto_ingreso = stats_font.render("Ingresá tu nombre y presioná ENTER", True, st.COLOR_04)
+        texto_ingreso = stats_font.render("Ingresá tu nombre (hasta 10 caracteres) y presioná ENTER", True, st.COLOR_04)
         rect_ingreso = texto_ingreso.get_rect(center=(st.ANCHO_VENTANA // 2, st.ALTO_VENTANA - 140))
         screen.blit(texto_ingreso, rect_ingreso)
 
