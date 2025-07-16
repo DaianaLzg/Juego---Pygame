@@ -22,14 +22,6 @@ def cambio_color_boton(mouse_pos, boton, click, color_normal, color_hover, color
     return color_normal
 
 # -------- SONIDO Y MÚSICA --------
-def reproducir_musica(nombre_archivo, loop=False):
-    """
-    Carga y reproduce música de fondo.
-    """
-    ruta = f"assets/music/{nombre_archivo}"
-    pygame.mixer.music.load(ruta)
-    pygame.mixer.music.set_volume(0.4)
-    pygame.mixer.music.play(-1 if loop else 0)
 
 def reproducir_sonido_boton(mouse_pos, boton, click):
     """
@@ -40,20 +32,6 @@ def reproducir_sonido_boton(mouse_pos, boton, click):
         efecto.set_volume(0.5)
         efecto.play()
 
-def actualizar_sonido(eventos, mouseX, mouseY, rect_icono, sonido_activado):
-    """
-    Activa o desactiva el sonido si se clickea sobre el icono.
-    """
-    for evento in eventos:
-        if evento.type == pygame.MOUSEBUTTONDOWN:
-            if rect_icono.collidepoint(mouseX, mouseY):
-                if sonido_activado:
-                    pygame.mixer.music.set_volume(0)
-                else:
-                    pygame.mixer.music.set_volume(0.4)
-                return not sonido_activado
-    return sonido_activado
-
 # -------- CRÉDITOS --------
 def mostrar_creditos(screen, fuente, fondo=None):
     """
@@ -63,7 +41,7 @@ def mostrar_creditos(screen, fuente, fondo=None):
     creditos = [
         "Créditos de Mach-Max",
         "Integrantes:",
-        "Lucas, Dai, Alexis, Facu",
+        "Lucas, Daiana, Alexis, Facu",
         "Materia: Programación I",
         "Universidad: UTN",
         "",
@@ -101,16 +79,24 @@ def guardar_puntaje(nombre, puntaje):
     Mantiene solo los 5 mejores puntajes.
     """
     datos = []
-
+    
+    # Cargar datos existentes
     if os.path.exists(RUTA_RANKING):
-        with open(RUTA_RANKING, "r", encoding="utf-8") as archivo:
-            try:
-                datos = json.load(archivo)
-            except json.JSONDecodeError:
-                datos = []
+        archivo = open(RUTA_RANKING, "r", encoding="utf-8")
+        contenido = archivo.read()
+        archivo.close()
+        if contenido.strip():  # Si el archivo no está vacío
+            datos = json.loads(contenido)
 
+    # Agregar nuevo puntaje
     datos.append({"nombre": nombre, "puntaje": puntaje})
-    datos = sorted(datos, key=lambda x: x["puntaje"], reverse=True)[:5]
+    
+    # Ordenar
+    def obtener_puntaje(item):
+        return item["puntaje"]
+    datos.sort(key=obtener_puntaje, reverse=True)
+    datos = datos[:5]  # Mantener solo top 5
 
+    # Guardar
     with open(RUTA_RANKING, "w", encoding="utf-8") as archivo:
         json.dump(datos, archivo, indent=4)

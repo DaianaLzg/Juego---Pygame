@@ -4,21 +4,18 @@ import assets as a
 from juego import main as jugar
 from ranking import mostrar_ranking
 from utils import (esta_sobre,
-                   cambio_color_boton,
-                   mostrar_creditos,
-                   #reproducir_musica,
-                   reproducir_sonido_boton,
-                   actualizar_sonido)
+                    cambio_color_boton,
+                    mostrar_creditos,
+                    reproducir_sonido_boton
+                    )
 
 def mostrar_menu_principal(screen):
+    '''Muestra el menu principal'''
     clock = pygame.time.Clock()
-
-    #reproducir_musica("musica_menu.ogg", loop=True)
 
     fuente_grande = pygame.font.Font("assets/fonts/arcade.ttf", 36)
     fuente_chica = pygame.font.Font("assets/fonts/arcade.ttf", 22)
     #fuente_titulo = pygame.font.Font("assets/fonts/arcade.ttf", 64)
-
 
     fondo = pygame.image.load("assets/images/fondo.png")
     fondo = pygame.transform.scale(fondo, (st.ANCHO_VENTANA, st.ALTO_VENTANA))
@@ -29,14 +26,6 @@ def mostrar_menu_principal(screen):
     titulo_rect = titulo_texto.get_rect(center=(st.ANCHO_VENTANA // 2, 120))
     screen.blit(titulo_texto, titulo_rect)
 
-
-
-    #sonido_on = pygame.image.load("assets/images/sonido_on.png")
-    #sonido_off = pygame.image.load("assets/images/sonido_off.png")
-    #sonido_on = pygame.transform.scale(sonido_on, (40, 40))
-    #sonido_off = pygame.transform.scale(sonido_off, (40, 40))
-    #icono_sonido = pygame.Rect(st.ANCHO_VENTANA - 50, st.ALTO_VENTANA - 50, 40, 40)
-
     botones = [
         {"texto": "Jugar", "x": 330, "y": 280, "w": 140, "h": 40},
         {"texto": "Ranking", "x": 315, "y": 340, "w": 170, "h": 40},
@@ -44,7 +33,6 @@ def mostrar_menu_principal(screen):
         {"texto": "Salir", "x": 330, "y": 460, "w": 140, "h": 40}
     ]
 
-    sonido_activado = True
     en_menu = True
 
     while en_menu:
@@ -61,8 +49,6 @@ def mostrar_menu_principal(screen):
                 exit()
             if evento.type == pygame.MOUSEBUTTONDOWN:
                 click = True
-
-        #sonido_activado = actualizar_sonido(eventos, mouseX, mouseY, icono_sonido, sonido_activado)
 
         for boton in botones:
             mouse_pos = (mouseX, mouseY)
@@ -81,6 +67,5 @@ def mostrar_menu_principal(screen):
             texto = fuente_grande.render(boton["texto"], True, color)
             screen.blit(texto, (boton["x"], boton["y"]))
 
-        #screen.blit(sonido_on if sonido_activado else sonido_off, icono_sonido)
         pygame.display.flip()
         clock.tick(st.FPS)

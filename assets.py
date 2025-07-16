@@ -1,6 +1,5 @@
 import os
 import pygame
-import settings as st 
 
 ASSETS_DIR   = os.path.dirname(__file__)
 IMAGENES_DIR = os.path.join(ASSETS_DIR, "assets", "images")
@@ -13,19 +12,19 @@ coche_max_5 = pygame.transform.scale(
     (50, 95)
 )
 
-
+#Coches rivales
 autos_enemigos = [
     pygame.transform.scale(
         pygame.image.load(os.path.join(IMAGENES_DIR, "RacerX.png")),
-        (30, 60)
+        (45, 80)
     ),
     pygame.transform.scale(
         pygame.image.load(os.path.join(IMAGENES_DIR, "Spider11.png")),
-        (30, 60)
+        (45, 80)
     ),
     pygame.transform.scale(
         pygame.image.load(os.path.join(IMAGENES_DIR, "Mati21.png")),
-        (30, 60)
+        (45, 80)
     )
 ]
 

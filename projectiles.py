@@ -1,5 +1,5 @@
 
-import pygame, settings as st
+import pygame
 
 proyectiles = []
 

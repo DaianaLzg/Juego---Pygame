@@ -17,7 +17,7 @@ def crear_competidor():
         competidores.append({
             "rect": rect,
             "imagen": random.choice(a.autos_enemigos),
-            "velocidad": random.randint(2, 5)
+            "velocidad": random.randint(2, 6)
         })
 
 def mover_competidores():

@@ -73,7 +73,7 @@ Proyecto-Juego-Pygame/
 
 - **← / → / ↑ / ↓** - Movimiento del auto
 - **ESPACIO** - Disparar sierras
-- **P** - Pausar / Reanudar juego
+- **CTRL** - Pausar / Reanudar juego
 - **ESC** - Salir desde pantalla de Game Over
 - **ENTER** - Salir desde pantalla de Game Over
 

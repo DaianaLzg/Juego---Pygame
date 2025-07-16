@@ -1,6 +1,4 @@
 import pygame
-import random
-import os
 from music import play_music
 import settings as st
 import assets as a
@@ -14,7 +12,7 @@ from assets import BACKGROUND_PATH
 from collisions import colision_jugador_enemigo, colision_proyectil_enemigo
 
 def main():
-    # —— Inicialización de Pygame y ventana ——
+    '''Inicialización de Pygame y ventana'''
     pygame.init()
     pygame.mixer.init()
     play_music()
@@ -70,7 +68,8 @@ def main():
         player.manejar_input()
 
         if current_time - last_spawn >= spawn_delay:
-            enemies.crear_competidor()
+            while len(enemies.competidores) < 5:
+                enemies.crear_competidor()
             last_spawn = current_time
         puntuacion += enemies.mover_competidores()
 

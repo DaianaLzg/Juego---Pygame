@@ -1,5 +1,5 @@
 # Configurar la pantalla (ALTO/ANCHO)
-ANCHO_VENTANA = 800 #500  
+ANCHO_VENTANA = 800 
 ALTO_VENTANA = 600
 FPS = 60
 
